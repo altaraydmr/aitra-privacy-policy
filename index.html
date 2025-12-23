@@ -3,169 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aitra - Gizlilik Politikası</title>
+    <title>Aitra - Privacy Policy</title>
     <style>
+        :root {
+            --bg: #ffffff;
+            --text: #1d1d1f;
+            --text-secondary: #6e6e73;
+            --border: #d2d2d7;
+            --accent: #0071e3;
+            --section-bg: #f5f5f7;
+        }
+
+        [data-theme="dark"] {
+            --bg: #000000;
+            --text: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --border: #424245;
+            --accent: #2997ff;
+            --section-bg: #1d1d1f;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.7;
-            color: #333;
-            background: #f8f9fa;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s, color 0.3s;
         }
-        
+
         .container {
-            max-width: 800px;
+            max-width: 980px;
             margin: 0 auto;
-            padding: 40px 20px;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 60px 20px;
         }
-        
+
         header {
-            background: linear-gradient(135deg, #3949AB 0%, #5C6BC0 100%);
-            color: white;
-            padding: 40px 20px;
             text-align: center;
-            margin: -40px -20px 40px -20px;
+            margin-bottom: 80px;
         }
-        
+
         h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 56px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
         }
-        
-        .last-updated {
-            opacity: 0.9;
-            font-size: 0.9em;
+
+        .subtitle {
+            font-size: 21px;
+            color: var(--text-secondary);
+            font-weight: 400;
         }
-        
-        h2 {
-            color: #3949AB;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            font-size: 1.8em;
-            border-bottom: 2px solid #3949AB;
-            padding-bottom: 10px;
-        }
-        
-        h3 {
-            color: #5C6BC0;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-        
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        
-        ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-        
-        li {
-            margin-bottom: 8px;
-        }
-        
-        .summary {
-            background: #E8EAF6;
-            border-left: 4px solid #3949AB;
-            padding: 20px;
-            margin: 30px 0;
-            border-radius: 4px;
-        }
-        
-        .summary h2 {
+
+        .theme-toggle {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: #1e3a8a;
             border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.4);
+        }
+
+        .moon-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #60a5fa;
+            position: relative;
+            box-shadow: 0 0 10px rgba(96, 165, 250, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .moon-icon::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            right: 2px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #1e3a8a;
+            transition: all 0.3s ease;
+        }
+
+        [data-theme="dark"] .moon-icon {
+            background: #fbbf24;
+            box-shadow: 0 0 20px rgba(251, 191, 36, 0.6);
+        }
+
+        [data-theme="dark"] .moon-icon::before {
+            background: transparent;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            background: #fbbf24;
+            box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+        }
+
+        [data-theme="dark"] .theme-toggle:hover {
+            box-shadow: 0 4px 12px rgba(251, 191, 36, 0.5);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .lang-switch a {
+            padding: 8px 16px;
+            border-radius: 980px;
+            background: var(--section-bg);
+            color: var(--text);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .lang-switch a:hover {
+            opacity: 0.8;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin: 60px 0 24px 0;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 32px 0 16px 0;
+        }
+
+        p {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            max-width: 720px;
+        }
+
+        ul, ol {
+            margin-left: 24px;
+            margin-bottom: 24px;
+        }
+
+        li {
+            font-size: 17px;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .summary {
+            background: var(--section-bg);
+            border-radius: 18px;
+            padding: 40px;
+            margin: 60px 0;
+        }
+
+        .summary h2 {
             margin-top: 0;
-            color: #3949AB;
         }
-        
-        .check {
-            color: #4CAF50;
-            font-weight: bold;
-        }
-        
-        .cross {
-            color: #F44336;
-            font-weight: bold;
-        }
-        
-        .lock {
-            color: #FF9800;
-            font-weight: bold;
-        }
-        
-        footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            text-align: center;
-            color: #777;
-            font-size: 0.9em;
-        }
-        
+
         a {
-            color: #3949AB;
+            color: var(--accent);
             text-decoration: none;
         }
-        
+
         a:hover {
             text-decoration: underline;
         }
 
-        .lang-switch {
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin: 80px 0;
+            border: none;
+        }
+
+        footer {
             text-align: center;
-            margin-bottom: 20px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
         }
 
-        .lang-switch a {
-            margin: 0 10px;
-            padding: 8px 16px;
-            background: #3949AB;
-            color: white;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .lang-switch a:hover {
-            background: #5C6BC0;
-            text-decoration: none;
-        }
-        
         @media (max-width: 768px) {
             .container {
-                padding: 20px 15px;
+                padding: 40px 20px;
             }
-            
-            header {
-                margin: -20px -15px 20px -15px;
-                padding: 30px 15px;
-            }
-            
+
             h1 {
-                font-size: 2em;
+                font-size: 40px;
             }
-            
+
             h2 {
-                font-size: 1.5em;
+                font-size: 28px;
+            }
+
+            h3 {
+                font-size: 21px;
+            }
+
+            .summary {
+                padding: 24px;
+            }
+
+            .theme-toggle {
+                top: 16px;
+                right: 16px;
+                width: 40px;
+                height: 40px;
+            }
+
+            .moon-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .moon-icon::before {
+                width: 16px;
+                height: 16px;
             }
         }
     </style>
 </head>
 <body>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+        <div class="moon-icon"></div>
+    </button>
+
     <div class="container">
         <header>
             <h1>Aitra</h1>
-            <p class="last-updated">Gizlilik Politikası</p>
+            <p class="subtitle">Privacy Policy</p>
         </header>
 
         <div class="lang-switch">
@@ -175,249 +276,230 @@
 
         <!-- TÜRKÇE -->
         <section id="tr">
-            <p class="last-updated"><strong>Son Güncelleme:</strong> 22 Aralık 2024</p>
+            <p><strong>Son Güncelleme:</strong> 22 Aralık 2024</p>
 
             <h2>Giriş</h2>
-            <p>Aitra ("biz", "bizim"), kullanıcılarının gizliliğini korumayı taahhüt eder. Bu Gizlilik Politikası, Aitra mobil uygulamasını ("Uygulama") kullanırken bilgilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.</p>
+            <p>Aitra, kullanıcılarının gizliliğini korumayı taahhüt eder. Bu politika, uygulamayı kullanırken bilgilerinizin nasıl toplandığını, kullanıldığını ve korunduğunu açıklar.</p>
 
             <h2>Toplanan Bilgiler</h2>
 
-            <h3>1. Erişilebilirlik Servisi Verileri</h3>
-            <p>Aitra, ekran çevirisi yapabilmek için Android Erişilebilirlik Servisi (Accessibility Service) kullanır:</p>
+            <h3>Erişilebilirlik Servisi</h3>
+            <p>Aitra, ekran çevirisi için Android Erişilebilirlik Servisi kullanır:</p>
             <ul>
-                <li><strong>Toplanan Veri:</strong> Yalnızca siz çeviri talep ettiğinizde, ekranda seçtiğiniz metin</li>
-                <li><strong>Toplama Amacı:</strong> Metni hedef dilinize çevirmek</li>
-                <li><strong>Saklama:</strong> Çevrilen metinler cihazınızda veya sunucularımızda <strong>kalıcı olarak saklanmaz</strong></li>
-                <li><strong>İşleme Süresi:</strong> Metin yalnızca çeviri sırasında geçici olarak işlenir ve hemen silinir</li>
-            </ul>
-            <p><strong>ÖNEMLİ:</strong> Uygulama, sizin açık izniniz olmadan ekranınızdaki hiçbir içeriği okumaz, saklamaz veya üçüncü taraflarla paylaşmaz.</p>
-
-            <h3>2. Kimlik Doğrulama</h3>
-            <ul>
-                <li><strong>Anonim Kimlik:</strong> Firebase Authentication kullanarak anonim bir kullanıcı kimliği oluşturulur</li>
-                <li><strong>Amaç:</strong> Spam koruması ve hizmet istismarını önlemek</li>
-                <li><strong>Kişisel Bilgi:</strong> Adınız, e-postanız veya telefon numaranız GEREKLİ DEĞİLDİR ve toplanmaz</li>
+                <li>Yalnızca siz çeviri talep ettiğinizde ekranda seçtiğiniz metin toplanır</li>
+                <li>Metinler geçici olarak işlenir ve hemen silinir</li>
+                <li>Hiçbir veri kalıcı olarak saklanmaz</li>
             </ul>
 
-            <h3>3. Kullanım İstatistikleri</h3>
-            <p>Şu anda herhangi bir analitik veya kullanım istatistiği toplanmamaktadır.</p>
+            <h3>Kimlik Doğrulama</h3>
+            <ul>
+                <li>Spam koruması için anonim kullanıcı kimliği oluşturulur</li>
+                <li>Adınız, e-postanız veya telefon numaranız toplanmaz</li>
+            </ul>
 
             <h2>Bilgilerin Kullanımı</h2>
-            <p>Toplanan bilgiler yalnızca şu amaçlarla kullanılır:</p>
-            <ol>
-                <li><strong>Çeviri Hizmeti Sağlama:</strong> Seçtiğiniz metni hedef dilinize çevirmek</li>
-                <li><strong>Hizmet Kalitesi:</strong> Çeviri sonuçlarını iyileştirmek</li>
-                <li><strong>Güvenlik:</strong> Spam ve kötüye kullanımı önlemek</li>
-            </ol>
+            <ul>
+                <li>Seçilen metni hedef dilinize çevirmek</li>
+                <li>Spam ve kötüye kullanımı önlemek</li>
+                <li>Hizmet kalitesini iyileştirmek</li>
+            </ul>
 
             <h2>Üçüncü Taraf Hizmetleri</h2>
 
             <h3>Google Gemini AI</h3>
             <ul>
-                <li><strong>Amaç:</strong> Metin çevirisi</li>
-                <li><strong>Gizlilik Politikası:</strong> <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></li>
-                <li><strong>Veri İşleme:</strong> Google, çeviri metinlerini işler ancak kalıcı olarak saklamaz</li>
+                <li>Metin çevirisi için kullanılır</li>
+                <li>Metinler geçici olarak işlenir, kalıcı saklanmaz</li>
+                <li><a href="https://policies.google.com/privacy" target="_blank">Gizlilik Politikası</a></li>
             </ul>
 
-            <h3>Firebase (Google)</h3>
+            <h3>Firebase</h3>
             <ul>
-                <li><strong>Hizmetler:</strong> Authentication, Cloud Functions</li>
-                <li><strong>Gizlilik Politikası:</strong> <a href="https://firebase.google.com/support/privacy" target="_blank">https://firebase.google.com/support/privacy</a></li>
-                <li><strong>Veri İşleme:</strong> Yalnızca anonim kullanıcı kimlikleri saklanır</li>
+                <li>Kimlik doğrulama ve backend işlemleri</li>
+                <li>Yalnızca anonim kimlikler saklanır</li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank">Gizlilik Politikası</a></li>
             </ul>
 
             <h2>Veri Güvenliği</h2>
             <ul>
-                <li><strong>Şifreleme:</strong> Tüm veriler HTTPS üzerinden şifrelenmiş olarak iletilir</li>
-                <li><strong>Erişim Kontrolü:</strong> Sunucu tarafında sıkı erişim kontrolleri uygulanır</li>
-                <li><strong>Saklama Süresi:</strong> Çevirilen metinler anında silinir</li>
+                <li>Tüm veriler HTTPS ile şifrelenir</li>
+                <li>Çevirilen metinler anında silinir</li>
+                <li>Sıkı erişim kontrolleri uygulanır</li>
             </ul>
 
-            <h2>Çocukların Gizliliği</h2>
-            <p>Aitra, 13 yaş altı çocuklardan bilerek kişisel bilgi toplamaz. 13 yaş altı çocukların uygulamayı kullanabilmesi için ebeveyn izni gereklidir.</p>
-
-            <h2>Kullanıcı Hakları (KVKK ve GDPR)</h2>
-            <p>Türkiye'de (KVKK) ve Avrupa Birliği'nde (GDPR) yaşayan kullanıcılar olarak şu haklara sahipsiniz:</p>
-            <ol>
-                <li><strong>Bilgi Talep Etme:</strong> Hakkınızda hangi verilerin işlendiğini öğrenme</li>
-                <li><strong>Düzeltme:</strong> Yanlış bilgilerin düzeltilmesini talep etme</li>
-                <li><strong>Silme:</strong> Verilerinizin silinmesini talep etme</li>
-                <li><strong>İtiraz:</strong> Veri işlemeye itiraz etme</li>
-            </ol>
-            <p><strong>İletişim:</strong> [E-posta adresinizi buraya ekleyin]</p>
-
-            <h2>Erişilebilirlik Servisi İzinleri</h2>
-            <p>Aitra, yalnızca aşağıdaki izinleri kullanır:</p>
+            <h2>Kullanıcı Hakları</h2>
+            <p>KVKK ve GDPR kapsamında şu haklara sahipsiniz:</p>
             <ul>
-                <li><strong>Accessibility Service:</strong> Yalnızca siz çeviri talep ettiğinizde ekrandan metin okumak için</li>
-                <li><strong>Overlay Permission:</strong> Çeviri penceresini ekranda göstermek için</li>
-                <li><strong>Internet:</strong> Çeviri isteklerini API'ye göndermek için</li>
+                <li>Verileriniz hakkında bilgi talep etme</li>
+                <li>Yanlış bilgilerin düzeltilmesini isteme</li>
+                <li>Verilerinizin silinmesini talep etme</li>
+                <li>Veri işlemeye itiraz etme</li>
             </ul>
-            <p><strong>Garanti:</strong> Bu izinler, izniniz olmadan arka planda veri toplama amacıyla ASLA kullanılmaz.</p>
 
-            <h2>Politika Değişiklikleri</h2>
-            <p>Bu Gizlilik Politikası zaman zaman güncellenebilir. Değişiklikler bu sayfada yayınlanacak ve "Son Güncelleme" tarihi güncellenecektir.</p>
-
-            <h2>İletişim</h2>
-            <p>Gizlilik politikamız hakkında sorularınız varsa:</p>
+            <h2>İzinler</h2>
             <ul>
-                <li><strong>E-posta:</strong> [E-posta adresinizi buraya ekleyin]</li>
-                <li><strong>Adres:</strong> Bursa, Türkiye</li>
+                <li><strong>Erişilebilirlik:</strong> Yalnızca çeviri talep ettiğinizde metin okumak için</li>
+                <li><strong>Overlay:</strong> Çeviri penceresini göstermek için</li>
+                <li><strong>İnternet:</strong> Çeviri API'sine bağlanmak için</li>
             </ul>
 
             <div class="summary">
-                <h2>Özet (TL;DR)</h2>
-                
-                <p><span class="check">✅ Aitra ne toplar?</span></p>
+                <h2>Özet</h2>
+                <p><strong>✅ Ne toplar:</strong></p>
                 <ul>
-                    <li>Yalnızca çevirmek için seçtiğiniz metin (geçici)</li>
-                    <li>Anonim kullanıcı kimliği (spam önleme için)</li>
+                    <li>Yalnızca seçtiğiniz metin (geçici)</li>
+                    <li>Anonim kullanıcı kimliği</li>
                 </ul>
 
-                <p><span class="cross">❌ Aitra ne TOPLAMAZ?</span></p>
+                <p><strong>❌ Ne toplamaz:</strong></p>
                 <ul>
-                    <li>İsim, e-posta, telefon numarası</li>
+                    <li>İsim, e-posta, telefon</li>
+                    <li>Konum, kişiler, fotoğraflar</li>
                     <li>Ekranınızdaki diğer içerikler</li>
-                    <li>Konum bilgisi</li>
-                    <li>Kişiler, mesajlar, fotoğraflar</li>
                 </ul>
 
-                <p><span class="lock">🔒 Verileriniz güvende mi?</span></p>
+                <p><strong>🔒 Güvenlik:</strong></p>
                 <ul>
-                    <li>Evet! Tüm veriler şifreli olarak iletilir</li>
-                    <li>Çevirilen metinler hemen silinir</li>
-                    <li>Hiçbir veri satılmaz veya paylaşılmaz</li>
+                    <li>Tüm veriler şifreli</li>
+                    <li>Metinler hemen silinir</li>
+                    <li>Hiçbir veri satılmaz</li>
                 </ul>
             </div>
 
-            <footer>
-                <p><em>Bu politika, Google Play Store gereksinimlerine, KVKK (Türkiye) ve GDPR (AB) düzenlemelerine uygun olarak hazırlanmıştır.</em></p>
-            </footer>
+            <h2>İletişim</h2>
+            <p><strong>E-posta:</strong> [E-posta adresinizi buraya ekleyin]<br>
+            <strong>Adres:</strong> Bursa, Türkiye</p>
         </section>
 
-        <hr style="margin: 60px 0; border: none; border-top: 2px solid #ddd;">
+        <hr class="divider">
 
         <!-- ENGLISH -->
         <section id="en">
-            <p class="last-updated"><strong>Last Updated:</strong> December 22, 2024</p>
+            <p><strong>Last Updated:</strong> December 22, 2024</p>
 
             <h2>Introduction</h2>
-            <p>Aitra ("we", "our") is committed to protecting the privacy of our users. This Privacy Policy explains how information is collected, used, and protected when you use the Aitra mobile application ("App").</p>
+            <p>Aitra is committed to protecting user privacy. This policy explains how information is collected, used, and protected when you use the app.</p>
 
-            <h2>Information We Collect</h2>
+            <h2>Information Collection</h2>
 
-            <h3>1. Accessibility Service Data</h3>
-            <p>Aitra uses Android Accessibility Service to provide screen translation:</p>
+            <h3>Accessibility Service</h3>
+            <p>Aitra uses Android Accessibility Service for screen translation:</p>
             <ul>
-                <li><strong>Data Collected:</strong> Only the text you select on your screen when you request a translation</li>
-                <li><strong>Purpose:</strong> To translate the text to your target language</li>
-                <li><strong>Storage:</strong> Translated texts are NOT permanently stored on your device or our servers</li>
-                <li><strong>Processing Time:</strong> Text is only temporarily processed during translation and immediately deleted</li>
-            </ul>
-            <p><strong>IMPORTANT:</strong> The app does not read, store, or share any content from your screen without your explicit permission.</p>
-
-            <h3>2. Authentication</h3>
-            <ul>
-                <li><strong>Anonymous ID:</strong> An anonymous user ID is created using Firebase Authentication</li>
-                <li><strong>Purpose:</strong> Spam protection and preventing service abuse</li>
-                <li><strong>Personal Information:</strong> Your name, email, or phone number is NOT required and not collected</li>
+                <li>Only text you select on screen is collected when you request translation</li>
+                <li>Text is temporarily processed and immediately deleted</li>
+                <li>No data is permanently stored</li>
             </ul>
 
-            <h3>3. Usage Statistics</h3>
-            <p>Currently, no analytics or usage statistics are collected.</p>
+            <h3>Authentication</h3>
+            <ul>
+                <li>Anonymous user ID created for spam protection</li>
+                <li>No name, email, or phone number collected</li>
+            </ul>
 
             <h2>How We Use Information</h2>
-            <p>Collected information is used only for:</p>
-            <ol>
-                <li><strong>Providing Translation Service:</strong> To translate selected text to your target language</li>
-                <li><strong>Service Quality:</strong> To improve translation results</li>
-                <li><strong>Security:</strong> To prevent spam and abuse</li>
-            </ol>
+            <ul>
+                <li>Translate selected text to your target language</li>
+                <li>Prevent spam and abuse</li>
+                <li>Improve service quality</li>
+            </ul>
 
             <h2>Third-Party Services</h2>
 
             <h3>Google Gemini AI</h3>
             <ul>
-                <li><strong>Purpose:</strong> Text translation</li>
-                <li><strong>Privacy Policy:</strong> <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a></li>
-                <li><strong>Data Processing:</strong> Google processes translation texts but does not store them permanently</li>
+                <li>Used for text translation</li>
+                <li>Text temporarily processed, not permanently stored</li>
+                <li><a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a></li>
             </ul>
 
-            <h3>Firebase (Google)</h3>
+            <h3>Firebase</h3>
             <ul>
-                <li><strong>Services:</strong> Authentication, Cloud Functions</li>
-                <li><strong>Privacy Policy:</strong> <a href="https://firebase.google.com/support/privacy" target="_blank">https://firebase.google.com/support/privacy</a></li>
-                <li><strong>Data Processing:</strong> Only anonymous user IDs are stored</li>
+                <li>Authentication and backend operations</li>
+                <li>Only anonymous IDs stored</li>
+                <li><a href="https://firebase.google.com/support/privacy" target="_blank">Privacy Policy</a></li>
             </ul>
 
             <h2>Data Security</h2>
             <ul>
-                <li><strong>Encryption:</strong> All data is transmitted encrypted via HTTPS</li>
-                <li><strong>Access Control:</strong> Strict access controls are applied on the server side</li>
-                <li><strong>Retention Period:</strong> Translated texts are immediately deleted</li>
+                <li>All data encrypted via HTTPS</li>
+                <li>Translated texts immediately deleted</li>
+                <li>Strict access controls applied</li>
             </ul>
 
-            <h2>Children's Privacy</h2>
-            <p>Aitra does not knowingly collect personal information from children under 13. Parental consent is required for children under 13 to use the app.</p>
-
-            <h2>User Rights (GDPR Compliance)</h2>
-            <p>Users in the European Union have the following rights:</p>
-            <ol>
-                <li><strong>Right to Access:</strong> Learn what data is being processed about you</li>
-                <li><strong>Right to Rectification:</strong> Request correction of incorrect information</li>
-                <li><strong>Right to Erasure:</strong> Request deletion of your data</li>
-                <li><strong>Right to Object:</strong> Object to data processing</li>
-            </ol>
-            <p><strong>Contact:</strong> [Add your email address here]</p>
-
-            <h2>Accessibility Service Permissions</h2>
-            <p>Aitra only uses the following permissions:</p>
+            <h2>User Rights</h2>
+            <p>Under GDPR, you have the right to:</p>
             <ul>
-                <li><strong>Accessibility Service:</strong> To read text from screen only when you request translation</li>
-                <li><strong>Overlay Permission:</strong> To display translation window on screen</li>
-                <li><strong>Internet:</strong> To send translation requests to API</li>
+                <li>Request information about your data</li>
+                <li>Request correction of incorrect data</li>
+                <li>Request deletion of your data</li>
+                <li>Object to data processing</li>
             </ul>
-            <p><strong>Guarantee:</strong> These permissions are NEVER used for background data collection without your permission.</p>
 
-            <h2>Policy Changes</h2>
-            <p>This Privacy Policy may be updated from time to time. Changes will be posted on this page and the "Last Updated" date will be updated.</p>
-
-            <h2>Contact</h2>
-            <p>If you have questions about our privacy policy:</p>
+            <h2>Permissions</h2>
             <ul>
-                <li><strong>Email:</strong> [Add your email address here]</li>
-                <li><strong>Address:</strong> Bursa, Turkey</li>
+                <li><strong>Accessibility:</strong> Read text from screen only when you request translation</li>
+                <li><strong>Overlay:</strong> Display translation window</li>
+                <li><strong>Internet:</strong> Connect to translation API</li>
             </ul>
 
             <div class="summary">
-                <h2>Summary (TL;DR)</h2>
-                
-                <p><span class="check">✅ What Aitra collects:</span></p>
+                <h2>Summary</h2>
+                <p><strong>✅ What we collect:</strong></p>
                 <ul>
-                    <li>Only the text you select for translation (temporary)</li>
-                    <li>Anonymous user ID (for spam prevention)</li>
+                    <li>Only selected text (temporary)</li>
+                    <li>Anonymous user ID</li>
                 </ul>
 
-                <p><span class="cross">❌ What Aitra does NOT collect:</span></p>
+                <p><strong>❌ What we don't collect:</strong></p>
                 <ul>
-                    <li>Name, email, phone number</li>
-                    <li>Other content on your screen</li>
-                    <li>Location information</li>
-                    <li>Contacts, messages, photos</li>
+                    <li>Name, email, phone</li>
+                    <li>Location, contacts, photos</li>
+                    <li>Other screen content</li>
                 </ul>
 
-                <p><span class="lock">🔒 Is your data safe?</span></p>
+                <p><strong>🔒 Security:</strong></p>
                 <ul>
-                    <li>Yes! All data is transmitted encrypted</li>
-                    <li>Translated texts are immediately deleted</li>
-                    <li>No data is sold or shared</li>
+                    <li>All data encrypted</li>
+                    <li>Text immediately deleted</li>
+                    <li>No data sold</li>
                 </ul>
             </div>
 
-            <footer>
-                <p><em>This policy has been prepared in compliance with Google Play Store requirements and GDPR regulations.</em></p>
-            </footer>
+            <h2>Contact</h2>
+            <p><strong>Email:</strong> [Add your email address here]<br>
+            <strong>Address:</strong> Bursa, Turkey</p>
         </section>
+
+        <footer>
+            <p>This policy complies with Google Play Store, KVKK, and GDPR requirements.</p>
+        </footer>
     </div>
+
+    <script>
+        // Tema değiştirme
+        const toggleBtn = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        
+        // Kayıtlı temayı yükle
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.setAttribute('data-theme', savedTheme);
+
+        function toggleTheme() {
+            const current = html.getAttribute('data-theme');
+            const next = current === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+        }
+
+        // Smooth scroll için dil geçişi
+        document.querySelectorAll('.lang-switch a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = document.querySelector(link.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
 </body>
 </html>
